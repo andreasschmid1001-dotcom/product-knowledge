@@ -6113,7 +6113,7 @@ function applyFilters() {
     const topics = card.dataset.topics || '';
     const notes = (card.querySelector('.card-notes') || {}).textContent || '';
     const matchSearch = !q || name.includes(q) || topics.includes(q) || notes.toLowerCase().includes(q);
-    const matchTopic = !activeTopic || topics.split(',').includes(activeTopic);
+    const matchTopic = !activeTopic || (activeTopic === 'uncategorized' ? topics === '' : topics.split(',').includes(activeTopic));
     card.classList.toggle('hidden', !(matchSearch && matchTopic));
   });
   updateCount();
