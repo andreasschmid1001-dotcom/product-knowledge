@@ -218,11 +218,70 @@
     display: none;
   }
 
+  /* FOOTER */
+  .site-footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 0.8em;
+  }
+  .site-footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .site-footer a:hover { color: var(--accent); }
+  .site-footer .sep { margin: 0 8px; opacity: 0.4; }
+
+  /* MODALS */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 16px;
+    overflow-y: auto;
+  }
+  .modal-box {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    max-width: 680px; width: 100%;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+  }
+  .modal-box h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 1.8em; font-weight: 400;
+    margin-bottom: 20px; color: var(--text);
+  }
+  .modal-box h3 {
+    font-size: 1em; font-weight: 600;
+    margin-top: 20px; margin-bottom: 8px;
+    color: var(--text);
+  }
+  .modal-box p, .modal-box li {
+    font-size: 0.9em; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 8px;
+  }
+  .modal-box ul { padding-left: 20px; margin-bottom: 12px; }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: none; border: none;
+    font-size: 1.5em; cursor: pointer;
+    color: var(--text-muted); line-height: 1;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--text); }
+
   @media (max-width: 700px) {
     .header { padding: 40px 20px 36px; }
     .grid { grid-template-columns: 1fr; }
     .controls { padding: 0 16px; }
     .grid-wrap { padding: 0 16px 40px; }
+    .modal-box { padding: 24px; }
   }
 </style>
 </head>
@@ -5981,6 +6040,46 @@
   <div class="no-results" id="no-results">No resources match your search.</div>
 </div>
 
+<footer class="site-footer">
+  <a href="#" onclick="openModal('modal-impressum'); return false;">Impressum</a>
+  <span class="sep">|</span>
+  <a href="#" onclick="openModal('modal-datenschutz'); return false;">Datenschutz</a>
+</footer>
+
+<div class="modal-overlay" id="modal-impressum">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-impressum')">&times;</button>
+    <h2>Impressum</h2>
+    <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>
+    <p>Andreas Schmid<br>Max-Wallraf-Str. 4a<br>50933 K&ouml;ln</p>
+    <h3>Kontakt</h3>
+    <p>E-Mail: mail@andreasschmid.eu</p>
+    <h3>Haftung f&uuml;r Inhalte</h3>
+    <p>Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu forschen, die auf eine rechtswidrige T&auml;tigkeit hinweisen.</p>
+    <h3>Haftung f&uuml;r Links</h3>
+    <p>Unser Angebot enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb k&ouml;nnen wir f&uuml;r diese fremden Inhalte auch keine Gew&auml;hr &uuml;bernehmen. F&uuml;r die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-datenschutz">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-datenschutz')">&times;</button>
+    <h2>Datenschutzerkl&auml;rung</h2>
+    <h3>1. Verantwortlicher</h3>
+    <p>Andreas Schmid<br>Max-Wallraf-Str. 4a<br>50933 K&ouml;ln<br>E-Mail: mail@andreasschmid.eu</p>
+    <h3>2. Hosting</h3>
+    <p>Diese Website wird &uuml;ber GitHub Pages gehostet. Anbieter ist die GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. Beim Aufruf dieser Website erhebt GitHub automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch &uuml;bermittelt (z.&thinsp;B. IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite). Weitere Informationen finden Sie in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von GitHub</a>.</p>
+    <h3>3. Allgemeine Hinweise</h3>
+    <p>Diese Website erhebt selbst keine personenbezogenen Daten, setzt keine Cookies und verwendet keine Analyse- oder Tracking-Tools.</p>
+    <h3>4. Externe Schriftarten</h3>
+    <p>Diese Seite nutzt Google Fonts zur einheitlichen Darstellung von Schriftarten. Beim Aufruf der Seite l&auml;dt Ihr Browser die ben&ouml;tigten Schriftarten von Servern von Google LLC, Amphitheatre Parkway, Mountain View, CA 94043, USA. Dabei wird Ihre IP-Adresse an Google &uuml;bertragen. Weitere Informationen finden Sie in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von Google</a>.</p>
+    <h3>5. Externe Links</h3>
+    <p>Diese Website enth&auml;lt Links zu externen Websites. Beim Anklicken dieser Links werden Sie auf die Seiten Dritter weitergeleitet. Wir haben keinen Einfluss auf deren Datenschutzpraktiken.</p>
+    <h3>6. Ihre Rechte</h3>
+    <p>Sie haben gem&auml;&szlig; DSGVO das Recht auf Auskunft, Berichtigung, L&ouml;schung, Einschr&auml;nkung der Verarbeitung sowie Daten&uuml;bertragbarkeit. Bei Fragen wenden Sie sich an: mail@andreasschmid.eu</p>
+  </div>
+</div>
+
 <script>
 const cards = document.querySelectorAll('.card');
 const searchInput = document.getElementById('search');
@@ -6034,6 +6133,19 @@ function filterAll() {
   btnAll.classList.remove('inactive');
   applyFilters();
 }
+
+// Modal logic
+function openModal(id) {
+  document.getElementById(id).style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); });
+});
 </script>
 </body>
 </html>
